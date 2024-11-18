@@ -1,0 +1,16 @@
+  <%= render "layouts/header" %>
+
+<h1><%= @article.name %></h1>
+
+<p><%= @article.price %></p>
+<p><%= @article.description%></p>
+
+ <%= link_to "Destroy", article_path(@article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
+
+
+
+
+

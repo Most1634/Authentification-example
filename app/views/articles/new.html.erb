@@ -1,0 +1,44 @@
+  <%= render "layouts/header" %>
+
+<div class="container" style="min-height: 100vh; color: white;">
+    <h1>Add New Article</h1>
+    <a class="navbar-brand" href="/">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+<%= form_with model: @article, url: article_path do |form| %>
+   <div class="col-md-4 mx-auto">
+    
+    <%= form.label :name , class: "form-label"%>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="col-md-4 mx-auto">
+    <%= form.label :price, class: "form-label" %>
+    <%= form.number_field :price , class: "form-control"%>
+  </div>
+
+<div class="col-md-4 mx-auto">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control" %>
+  </div>
+
+<div class="col-md-4 mx-auto ">
+    <%= form.label :image, class: "form-label" %>
+    <%= form.file_field :image, class: "form-control" %>
+  </div>
+
+<div class="col-md-4 mx-auto">
+    <%= form.label :status, class: "form-label" %>
+    <%= form.text_area :status, class: "form-control" %>
+  </div>
+
+
+
+
+  <div class="actions col-md-4 mx-auto">
+    <%= form.submit "Create", class: "btn btn-danger" %>
+  </div>
+<% end %>
+</div>

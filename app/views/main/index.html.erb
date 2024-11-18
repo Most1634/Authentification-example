@@ -1,0 +1,74 @@
+  <%= render "layouts/header" %>
+<div class="container" style="min-height: 100vh; color: white;">
+  <!-- Home Page Title at the Top -->
+  <h1 class="display-1 text-success text-center mt-4">Home Page</h1>
+
+  <!-- Centered Content Below the Title -->
+  <div class="d-flex justify-content-center align-items-center" style="min-height: 60vh;">
+    <% if user_signed_in? %>
+      <div>
+        <!-- Content for signed-in users -->
+      <div class="d-flex justify-content-center align-items-center" style="height: 20vh;">
+        <div class="text-center">
+            <h2 class="display-3">Welcome back!</h2>
+        </div>
+        </div>
+
+
+        <%= link_to "+ add Article", new_article_path, class: "btn btn-primary mx-2" %>
+
+
+       <h2 class="text-danger" style="color: #00008b;">Our blog has <%= Article.public_count %> articles and counting!</h2>
+ <div class="container my-4">
+  <div class="row">
+    <% @articles.each do |article| %>
+      <% unless article.archived? %>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <!-- Display Article Image -->
+            <% if article.image.attached? %>
+              <%= image_tag article.image, class: "card-img-top", alt: article.name %>
+            <% else %>
+              <!-- Placeholder Image if no image is attached -->
+              <%= image_tag "background.jpg", class: "card-img-top", alt: "No image available" %>
+            <% end %>
+
+            <div class="card-body">
+              <!-- Display Article Name -->
+              <h5 class="card-title"><%= article.name %></h5>
+              
+              <!-- Display Article Price -->
+              <p class="card-text text-primary"><strong>Price:</strong> €<%= article.price %></p>
+              
+              <%= link_to "View Article", article_path(article) %>
+
+              <!-- Link to Article Details -->
+               
+              
+
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+      </div>
+    <% else %>
+      <div class="text-center">
+        <%= link_to "Sign Up", new_registration_path, class: "btn btn-primary mx-2" %>
+        <%= link_to "Log in", new_session_path, class: "btn btn-success mx-2" %>
+      </div>
+    <% end %>
+  </div>
+</div>
